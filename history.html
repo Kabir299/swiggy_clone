@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order History</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://source.unsplash.com/1600x900/?restaurant,food,order') no-repeat center center/cover;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            transition: background-image 1s ease-in-out;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .order-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .order-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .card-body {
+            text-align: left;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: #ff6b6b;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4757;
+        }
+
+        .table {
+            color: white;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🍽 Food Delivery</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>📜 Order History 📜</h2>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Restaurant</th>
+                        <th>Food Item</th>
+                        <th>Quantity</th>
+                        <th>Price per Item</th>
+                        <th>Total Price</th>
+                        <th>Order Date</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in order_history %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.name }}</td>
+                        <td>{{ order.contact }}</td>
+                        <td>{{ order.restaurant }}</td>
+                        <td>{{ order.food_item }}</td>
+                        <td>{{ order.quantity }}</td>
+                        <td>{{ order.price_per_item }}</td>
+                        <td>{{ order.total_price }}</td>
+                        <td>{{ order.order_date }}</td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        setInterval(() => {
+            document.body.style.backgroundImage = url('https://source.unsplash.com/1600x900/?restaurant,food,order&random=${Math.random()}');
+        }, 10000);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

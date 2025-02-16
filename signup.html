@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign Up | Food Delivery</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="signup-container">
+        <h1>🍕 Sign Up</h1>
+        <p>Join us and order delicious meals!</p>
+
+        <form method="post">
+            <input type="text" name="username" placeholder="👤 Username" required>
+            <input type="password" name="password" placeholder="🔒 Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </div>
+
+</body>
+</html>
